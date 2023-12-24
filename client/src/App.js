@@ -8,7 +8,7 @@ const App = () => {
         <Router basename = "/">
             <Routes>
                 <Route exact path='/' element={<Join/>}/>
-                <Route path='/chat' element={<Chat/>}/>
+                <Route exact path='/chat' element={<Chat/>}/>
             </Routes>
         </Router>
     );
