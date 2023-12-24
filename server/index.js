@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const socketio = require('socket.io');
 const http = require('http');
 const cors = require('cors');
@@ -45,6 +46,12 @@ io.on('connection', (socket) => {
     })
 })
 app.use(cors());
+const indexPath = path.join(__dirname, '..', 'client', 'public', 'index.html');
+
+app.get('*', (req, res) => {
+    res.sendFile(indexPath);
+});
+
 app.use(router);
 
 
