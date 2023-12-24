@@ -1,6 +1,7 @@
 const express = require('express');
 const socketio = require('socket.io');
 const http = require('http');
+const cors = require('cors');
 
 const PORT = process.env.port || 5000;
 
@@ -15,11 +16,15 @@ const io = socketio(server);
 io.on('connection', (socket) => {
     console.log('We have a new connection!');
 
+    socket.on('join', ({name, room}, callback) => {
+        console.log(name, room);
+
+    })
     socket.on('disconnect', () => {
         console.log('Aw man they left...');
     })
 })
-
+app.use(cors());
 app.use(router);
 
 server.listen(PORT, ()=> {
