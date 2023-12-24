@@ -46,8 +46,8 @@ io.on('connection', (socket) => {
     })
 })
 app.use(cors());
-const indexPath = path.join(__dirname, '..', 'client', 'public', 'index.html');
 
+app.use(express.static('build'));
 app.get('*', (req, res) => {
     res.sendFile(indexPath);
 });
