@@ -65,16 +65,14 @@ const Chat = () => {
             sendMessage(event);
     }
 
-    console.log(message, messages)
-
     return(
         <div className = 'outerContainer'>
+            <TextContainer users = {users}/>
             <div className = 'container'>
                 <InfoBar room = {room}/>
                 <Messages messages = {messages} name = {name}/>
                 <Input message = {message} handleMessageChange={handleMessageChange} handleMessageSend={handleMessageSend}/>
             </div>
-            <TextContainer users = {users}/>
         </div>
     )
 }
