@@ -48,9 +48,6 @@ io.on('connection', (socket) => {
 app.use(cors());
 
 app.use(express.static('build'));
-app.get('*', (req, res) => {
-    res.sendFile(indexPath);
-});
 
 app.use(router);
 
