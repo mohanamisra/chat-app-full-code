@@ -25,4 +25,9 @@
 
 .onlineIcon {
     margin-right: 5%;
+    max-height: 12px;
+}
+
+.closeIcon {
+    filter: brightness(0%);
 }
