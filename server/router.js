@@ -5,4 +5,9 @@ router.get('/', (request, response) => {
     response.send('Server is running!')
 });
 
+router.get('/chat', (req, res) => {
+    // Handle the '/chat' route
+    res.send({ response: "Server is up and running." }).status(200);
+});
+
 module.exports = router;
