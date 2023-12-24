@@ -12,6 +12,8 @@ const Chat = () => {
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
+    const [messages, setMessages] = useState([]);
+    const [message, setMessage] = useState('');
     const ENDPOINT = 'localhost:5000';
 
     useEffect(() => {
@@ -33,8 +35,39 @@ const Chat = () => {
         }
     }, [ENDPOINT, window.location.search]);
 
+    useEffect(() => {
+        socket.on('message', (message) => {
+            setMessages([...messages, message]);
+        })
+    }, [messages]);
+
+    const handleMessageChange = (event) => {
+        const newMessage = event.target.value;
+        setMessage(newMessage);
+    }
+
+    const sendMessage = (event) => {
+        event.preventDefault();
+        if(message)
+            socket.emit('sendMessage', message, () => setMessage(''));
+    }
+
+    const handleMessageSend = (event) => {
+        if(event.key === 'Enter')
+            sendMessage(event);
+    }
+
+    console.log(message, messages)
+
     return(
-        <h1>CHAT</h1>
+        <div className = 'outerContainer'>
+            <div className = 'container'>
+                <form>
+                    <input value = {message} onChange = {handleMessageChange}
+                    onKeyPress = {handleMessageSend}/>
+                </form>
+            </div>
+        </div>
     )
 }
 
