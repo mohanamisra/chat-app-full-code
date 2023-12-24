@@ -9,6 +9,7 @@ import Messages from "./components/Messages/Messages";
 import TextContainer from "./components/TextContainer/TextContainer";
 
 import './Chat.css';
+import Join from "./components/Join/Join";
 
 let socket;
 
@@ -34,14 +35,16 @@ const Chat = () => {
 
             });
 
-            const handleBeforeUnload = () => {
-                socket.emit('disconnect');
+            const handleBeforeUnload = (event) => {
+                event.preventDefault();
+                console.log('reloaded')
+                navigate('/');
             };
 
-            window.addEventListener('unload', handleBeforeUnload);
+            window.addEventListener('beforeunload', handleBeforeUnload);
 
             return () => {
-                window.removeEventListener('unload', handleBeforeUnload);
+                window.removeEventListener('beforeunload', handleBeforeUnload);
                 socket.emit('disconnect');
                 socket.off();
             };
