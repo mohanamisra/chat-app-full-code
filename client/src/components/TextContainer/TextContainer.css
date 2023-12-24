@@ -1,5 +1,5 @@
 .textContainer {
-    display: flex;
+    display: none;
     flex-direction: column;
     margin-left: 100px;
     color: white;
