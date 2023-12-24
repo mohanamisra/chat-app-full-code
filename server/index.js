@@ -49,5 +49,5 @@ app.use(router);
 
 
 server.listen(PORT, ()=> {
-    console.log(`Server has started on PORT ${PORT}\nVISIT AT http://localhost:5000/`);
+    console.log(`Server has started on PORT ${PORT}`);
 })
