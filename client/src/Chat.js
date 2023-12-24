@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import {useLocation} from "react-router-dom";
 import queryString from 'query-string';
 import { useNavigate } from 'react-router-dom';
 import io from 'socket.io-client';
@@ -38,7 +39,7 @@ const Chat = () => {
             const handleBeforeUnload = (event) => {
                 event.preventDefault();
                 console.log('reloaded')
-                navigate('/');
+                navigate(-1);
             };
 
             window.addEventListener('beforeunload', handleBeforeUnload);
