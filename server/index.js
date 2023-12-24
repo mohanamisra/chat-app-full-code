@@ -44,8 +44,9 @@ io.on('connection', (socket) => {
         }
     })
 })
-app.use(cors());
 app.use(router);
+app.use(cors());
+
 
 server.listen(PORT, ()=> {
     console.log(`Server has started on PORT ${PORT}\nVISIT AT http://localhost:5000/`);
