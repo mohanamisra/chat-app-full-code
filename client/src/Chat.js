@@ -39,7 +39,8 @@ const Chat = () => {
             const handleBeforeUnload = (event) => {
                 event.preventDefault();
                 console.log('reloaded')
-                navigate(-1);
+                navigate('/');
+                console.log('after homepage');
             };
 
             window.addEventListener('beforeunload', handleBeforeUnload);
