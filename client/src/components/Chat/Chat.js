@@ -71,7 +71,7 @@ const Chat = () => {
             <div className = 'container'>
                 <InfoBar room = {room}/>
                 <Messages messages = {messages} name = {name}/>
-                <Input message = {message} handleMessageChange={handleMessageChange} handleMessageSend={handleMessageSend}/>
+                <Input message = {message} setMessage={setMessage} sendMessage={sendMessage}/>
             </div>
         </div>
     )
