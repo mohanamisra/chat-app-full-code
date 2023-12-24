@@ -7,7 +7,7 @@
     justify-content: space-between;
     align-items: center;
     height: 100vh;
-    background-image: url('../../images/old.jpg');
+    background-image: url('images/old.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }

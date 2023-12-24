@@ -3,10 +3,10 @@ import {useState, useEffect} from 'react';
 import queryString from 'query-string';
 import { useNavigate } from 'react-router-dom';
 import io from 'socket.io-client';
-import InfoBar from "../InfoBar/InfoBar";
-import Input from "../Input/Input";
-import Messages from "../Messages/Messages";
-import TextContainer from "../TextContainer/TextContainer";
+import InfoBar from "./components/InfoBar/InfoBar";
+import Input from "./components/Input/Input";
+import Messages from "./components/Messages/Messages";
+import TextContainer from "./components/TextContainer/TextContainer";
 
 import './Chat.css';
 
