@@ -6,7 +6,6 @@ router.get('/', (request, response) => {
 });
 
 router.get('/chat', (req, res) => {
-    // Handle the '/chat' route
     res.send({ response: "Server is up and running." }).status(200);
 });
 

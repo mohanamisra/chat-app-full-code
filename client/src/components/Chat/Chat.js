@@ -19,7 +19,7 @@ const Chat = () => {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
     const [users, setUsers] = useState('');
-    const ENDPOINT = 'https://cyberpunkchat.onrender.com/';
+    const ENDPOINT = 'https://cyberpunkchat.onrender.com';
 
     useEffect(() => {
         const {name, room} = queryString.parse(window.location.search);
