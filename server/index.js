@@ -12,6 +12,14 @@ const server = http.createServer(app);
 const io = socketio(server);
 //THERE YOU GO
 
+io.on('connection', (socket) => {
+    console.log('We have a new connection!');
+
+    socket.on('disconnect', () => {
+        console.log('Aw man they left...');
+    })
+})
+
 app.use(router);
 
 server.listen(PORT, ()=> {
