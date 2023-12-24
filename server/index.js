@@ -46,9 +46,6 @@ io.on('connection', (socket) => {
     })
 })
 app.use(cors());
-
-app.use(express.static('build'));
-
 app.use(router);
 
 

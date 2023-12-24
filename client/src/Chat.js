@@ -25,7 +25,7 @@ const Chat = () => {
         const {name, room} = queryString.parse(window.location.search);
         socket = io(ENDPOINT, {transports:['websocket']});
         if(!name || !room) {
-            navigate('/');
+            console.log('I forgot...');
         }
         else {
             setName(name);
