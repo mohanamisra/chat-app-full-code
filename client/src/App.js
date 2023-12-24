@@ -5,7 +5,7 @@ import Chat from './components/Chat/Chat';
 
 const App = () => {
     return (
-        <Router>
+        <Router basename = "/">
             <Routes>
                 <Route exact path='/' element={<Join/>}/>
                 <Route path='/chat' element={<Chat/>}/>
