@@ -44,8 +44,8 @@ io.on('connection', (socket) => {
         }
     })
 })
-app.use(router);
 app.use(cors());
+app.use(router);
 
 
 server.listen(PORT, ()=> {
