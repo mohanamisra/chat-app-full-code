@@ -3,6 +3,9 @@ import {useState, useEffect} from 'react';
 import queryString from 'query-string';
 import { useNavigate } from 'react-router-dom';
 import io from 'socket.io-client';
+import InfoBar from "../InfoBar/InfoBar";
+import Input from "../Input/Input";
+import Messages from "../Messages/Messages"
 
 import './Chat.css';
 
@@ -62,10 +65,9 @@ const Chat = () => {
     return(
         <div className = 'outerContainer'>
             <div className = 'container'>
-                <form>
-                    <input value = {message} onChange = {handleMessageChange}
-                    onKeyPress = {handleMessageSend}/>
-                </form>
+                <InfoBar room = {room}/>
+                <Messages messages = {messages} name = {name}/>
+                <Input message = {message} handleMessageChange={handleMessageChange} handleMessageSend={handleMessageSend}/>
             </div>
         </div>
     )
