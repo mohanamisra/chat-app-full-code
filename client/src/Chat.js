@@ -33,12 +33,20 @@ const Chat = () => {
             socket.emit('join', {name, room}, () => {
 
             });
+
+            const handleBeforeUnload = () => {
+                socket.emit('disconnect');
+            };
+
+            window.addEventListener('unload', handleBeforeUnload);
+
             return () => {
+                window.removeEventListener('unload', handleBeforeUnload);
                 socket.emit('disconnect');
                 socket.off();
-            }
+            };
         }
-    }, [ENDPOINT, window.location.search]);
+    }, [ENDPOINT, navigate]);
 
     useEffect(() => {
         socket.on('message', (message) => {
