@@ -1,17 +1,13 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import {useHistory} from 'react-router-dom';
 import Join from './components/Join/Join';
 import Chat from './components/Chat/Chat';
 
 const App = () => {
-    const history = useHistory();
     return (
-        <Router history = {history}>
-            <Routes>
+        <Router>
                 <Route path='/' element={<Join/>}/>
                 <Route path='/chat' element={<Chat/>}/>
-            </Routes>
         </Router>
     );
 };
