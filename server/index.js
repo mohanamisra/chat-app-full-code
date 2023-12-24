@@ -16,6 +16,8 @@ const server = http.createServer(app);
 const io = socketio(server);
 //THERE YOU GO
 
+app.use(cors());
+
 io.on('connection', (socket) => {
     socket.on('join', ({name, room}, callback) => {
         const {error, user} = addUser({id: socket.id, name, room});
@@ -46,7 +48,6 @@ io.on('connection', (socket) => {
         }
     })
 })
-app.use(cors());
 app.use(router);
 
 
