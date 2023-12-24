@@ -20,6 +20,7 @@ io.on('connection', (socket) => {
         const {error, user} = addUser({id: socket.id, name, room});
 
         if(error) return callback(error);
+
         socket.emit('message', {user: 'admin', text: `Hi ${user.name}! You have joined room ${user.room}`});
         socket.broadcast.to(user.room).emit('message', {user: 'admin', text: `${user.name} has joined, everyone say hi!`});
 
@@ -34,7 +35,10 @@ io.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
-        console.log('Aw man they left...');
+        const user = removeUser(socket.id);
+        if(user) {
+            io.to(user.room).emit('message', {user: 'admin', text: `${user.name} has left the chat`})
+        }
     })
 })
 app.use(cors());
