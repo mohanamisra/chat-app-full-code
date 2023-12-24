@@ -11,6 +11,7 @@ import TextContainer from "./components/TextContainer/TextContainer";
 
 import './Chat.css';
 import Join from "./components/Join/Join";
+const ENDPOINT = 'https://cyberpunkchat.onrender.com';
 
 let socket;
 
@@ -21,7 +22,6 @@ const Chat = () => {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
     const [users, setUsers] = useState('');
-    const ENDPOINT = 'https://cyberpunkchat.onrender.com';
 
     useEffect(() => {
         const {name, room} = queryString.parse(window.location.search);
@@ -33,23 +33,7 @@ const Chat = () => {
             setName(name);
             setRoom(room);
             socket.emit('join', {name, room}, () => {
-
             });
-
-            const handleBeforeUnload = (event) => {
-                event.preventDefault();
-                console.log('reloaded')
-                navigate('/');
-                console.log('after homepage');
-            };
-
-            window.addEventListener('beforeunload', handleBeforeUnload);
-
-            return () => {
-                window.removeEventListener('beforeunload', handleBeforeUnload);
-                socket.emit('disconnect');
-                socket.off();
-            };
         }
     }, [ENDPOINT, navigate]);
 
