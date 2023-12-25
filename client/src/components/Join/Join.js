@@ -26,18 +26,7 @@ const Join = () => {
     return(
         <div className = 'joinOuterContainer'>
             <div className = 'joinInnerContainer'>
-                <TypeIt className = 'heading'
-                        getBeforeInit={(instance) => {
-                    instance.type("Login!").pause(1000).delete(1).pause(500).type("");
-                    return instance;
-                }} options={{
-                        speed: 60,
-                        waitUntilVisible: true,
-                        afterComplete: function (instance) {
-                            instance.destroy();
-                        }
-                    }}
-                />
+                <h1 className = 'heading'>Login</h1>
                 <form className = 'form'>
                     <div><input placeholder = 'Enter name' className = 'joinInput' type = 'text' onChange = {handleNameChange}/></div>
                     <div><input placeholder = 'Enter room name' className = 'joinInput' type = 'text' onChange = {handleRoomNameChange}/></div>
