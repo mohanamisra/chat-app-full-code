@@ -1,6 +1,5 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {useLocation} from "react-router-dom";
 import queryString from 'query-string';
 import { useNavigate } from 'react-router-dom';
 import io from 'socket.io-client';
@@ -10,7 +9,6 @@ import Messages from "./components/Messages/Messages";
 import TextContainer from "./components/TextContainer/TextContainer";
 
 import './Chat.css';
-import Join from "./components/Join/Join";
 const ENDPOINT = 'https://cyberpunkchat.onrender.com';
 
 let socket;
@@ -46,20 +44,10 @@ const Chat = () => {
         });
     }, [messages]);
 
-    const handleMessageChange = (event) => {
-        const newMessage = event.target.value;
-        setMessage(newMessage);
-    }
-
     const sendMessage = (event) => {
         event.preventDefault();
         if(message)
             socket.emit('sendMessage', message, () => setMessage(''));
-    }
-
-    const handleMessageSend = (event) => {
-        if(event.key === 'Enter')
-            sendMessage(event);
     }
 
     return(
