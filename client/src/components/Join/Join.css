@@ -49,6 +49,13 @@ html, body {
 
 :root {
     --ti-cursor-font-weight: 300;
+    animation: hideCursor 0s linear 3.5s forwards; /* Animation to hide cursor after 3 seconds */
+}
+
+@keyframes hideCursor {
+    to {
+        --ti-cursor-font-size: 0px; /* Change to the desired final value (0px) */
+    }
 }
 
 

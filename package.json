@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "from": "^0.1.7",
+    "typeit": "^8.8.0",
+    "TypeIt": "npm:typeit@^8.8.0"
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
+import TypeIt from "typeit-react";
 import {Link} from 'react-router-dom';
-import TypeIt from 'typeit-react';
 import './Join.css';
 
 const Join = () => {
@@ -26,8 +26,14 @@ const Join = () => {
     return(
         <div className = 'joinOuterContainer'>
             <div className = 'joinInnerContainer'>
-                <h1 className = 'heading'>Login</h1>
                 <form className = 'form'>
+                    <TypeIt   getBeforeInit={(instance) => {
+                        instance.type("Login!").pause(750).delete(1).pause(500).type("");
+
+                        // Remember to return it!
+                        return instance;
+                    }}
+                              className = 'heading'></TypeIt>
                     <div><input placeholder = 'Enter name' className = 'joinInput' type = 'text' onChange = {handleNameChange}/></div>
                     <div><input placeholder = 'Enter room name' className = 'joinInput' type = 'text' onChange = {handleRoomNameChange}/></div>
                     <Link onClick = {handleButtonClick} to = {`/chat?name=${name}&room=${room}`}>
