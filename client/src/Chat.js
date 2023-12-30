@@ -1,31 +1,30 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import queryString from "query-string";
-import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import InfoBar from "./components/InfoBar/InfoBar";
 import Input from "./components/Input/Input";
 import Messages from "./components/Messages/Messages";
 import TextContainer from "./components/TextContainer/TextContainer";
+import { useLocation } from "react-router";
 
 import "./Chat.css";
-const ENDPOINT = 'https://cyberpunkchat.onrender.com';
+const ENDPOINT = "http://localhost:5000";
 const socket = io(ENDPOINT, {
     transports: ["websocket"],
-}); // ! now defined globally
+});
 
 const Chat = () => {
-    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [room, setRoom] = useState("");
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState("");
     const [users, setUsers] = useState("");
+    let location = useLocation();
 
     useEffect(() => {
-        const info = queryString.parse(window.location.search);
-        const query_name = info.name; // ! to prevent name conflicts
-        const query_room = info.room; // ! to prevent name conflicts
+        const info = location.state;
+        const query_name = info.name;
+        const query_room = info.room;
         console.log(query_name, query_room);
         if (!query_name || !query_room) {
             console.log("I forgot...");
@@ -34,16 +33,15 @@ const Chat = () => {
             setRoom(query_room);
             socket.emit("join", { name: query_name, room: query_room }, () => {});
         }
-    }, [navigate]);
 
-    useEffect(() => {
-        socket.on("message", (message) => {
-            setMessages([...messages, message]);
+        socket.on("message", (new_message) => {
+            setMessages([...messages, new_message]);
         });
+
         socket.on("roomData", ({ users }) => {
             setUsers(users);
         });
-    }, [messages]);
+    }, [messages, location]);
 
     const sendMessage = (event) => {
         event.preventDefault();
